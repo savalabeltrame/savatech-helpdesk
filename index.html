@@ -1,0 +1,2221 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marco Savala | Desarrollador de Software & Analista de Datos - Helpdesk Savatech</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Desarrollador de Software y Analista de Datos formado en España. Especialista en Python, SQL y sistemas de helpdesk técnico. Joinville, Brasil.">
+    <meta name="keywords"
+        content="desarrollador, python, sql, análisis de datos, helpdesk, soporte técnico, Joinville, Brasil">
+    <meta name="author" content="Marco A Savala B">
+
+    <!-- Open Graph (para WhatsApp, LinkedIn, Facebook) -->
+    <meta property="og:title" content="Marco Savala | Desarrollador de Software & Analista de Datos">
+    <meta property="og:description"
+        content="Sistema integral de helpdesk técnico con diagnósticos avanzados. Python, SQL y análisis de datos.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #070808;
+            --secondary: #f60d09;
+            --accent: #06b6d4;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gradient: linear-gradient(135deg, #08f2a8 0%, #2019d4 100%);
+            --gradient-hover: linear-gradient(135deg, #2019d4 0%, #08f2a8 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ANIMACIONES */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* NAV */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            padding: 0.7rem 5%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            -webkit-text-fill-color: initial;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(8, 242, 168, 0.1);
+        }
+
+        .nav-links a.cta-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a.cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: var(--dark);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* HERO */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 8rem 5% 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, #fff 0%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 4rem auto 0;
+            animation: fadeInUp 0.8s ease 0.8s backwards;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            display: block;
+            color: #ffd700;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: rgba(8, 242, 168, 0.1);
+            color: #08f2a8;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ABOUT */
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-photo {
+            width: 100%;
+            aspect-ratio: 1;
+            background: var(--gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: white;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 60%);
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .about-badge-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-content p {
+            font-size: 1.05rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+
+        .about-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-info-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .about-info-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .about-info-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .about-info-text strong {
+            display: block;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .about-info-text span {
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+
+        /* EDUCATION */
+        .education {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .education-card.featured {
+            grid-column: span 2;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+            border: 2px solid #08f2a8;
+        }
+
+        .education-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-flag {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-period {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .education-institution {
+            color: #64748b;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .education-description {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .education-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .edu-tag {
+            padding: 0.4rem 0.8rem;
+            background: rgba(8, 242, 168, 0.1);
+            color: #059669;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* FEATURES */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+            transform-origin: left;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* SERVICES */
+        .services {
+            background: linear-gradient(135deg, #08f2a8 0%, #2019d4 100%);
+            color: white;
+        }
+
+        .services .section-title {
+            color: white;
+        }
+
+        .services .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .service-card p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* SHOWCASE */
+        .showcase {
+            background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .showcase-item {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.4s;
+        }
+
+        .showcase-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .showcase-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #08f2a8 0%, #2019d4 100%);
+            padding: 2rem 2rem 0;
+        }
+
+        .laptop-mockup {
+            background: #1e293b;
+            border-radius: 12px 12px 0 0;
+            padding: 0.5rem;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .laptop-screen {
+            background: #0f172a;
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+        }
+
+        .laptop-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .showcase-info {
+            padding: 1.8rem;
+        }
+
+        .showcase-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .showcase-info p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* CODE PROJECTS */
+        .code-projects {
+            background: white;
+        }
+
+        .code-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .code-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s;
+            border: 1px solid #e2e8f0;
+        }
+
+        .code-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .code-header {
+            background: linear-gradient(135deg, #08f2a8 0%, #2019d4 100%);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-icon {
+            font-size: 2.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .code-tech {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .code-tech span {
+            padding: 0.3rem 0.7rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+        }
+
+        .code-card h3 {
+            padding: 1.5rem 1.5rem 0.5rem;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .code-card>p {
+            padding: 0 1.5rem;
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .code-features {
+            padding: 1rem 1.5rem;
+        }
+
+        .code-feature {
+            padding: 0.5rem 0;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        .code-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .code-link {
+            flex: 1;
+            padding: 0.7rem;
+            background: var(--light);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .code-link:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* SKILLS */
+        .skills {
+            background: var(--light);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .skill-category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f1f5f9;
+        }
+
+        .skill-category-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .skill-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .skill-name {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .skill-percent {
+            color: #08f2a8;
+            font-weight: 700;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 10px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+
+        /* TECH STACK */
+        .tech-stack-section {
+            background: white;
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .tech-badge {
+            background: var(--light);
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            border: 2px solid #e2e8f0;
+            font-weight: 600;
+            color: var(--dark);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .tech-badge:hover {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* CONTACT */
+        .contact {
+            background: var(--dark);
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact .section-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: white;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            border-color: #08f2a8;
+        }
+
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item-text strong {
+            display: block;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-item-text span {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: white;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #08f2a8;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--gradient);
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(8, 242, 168, 0.3);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 3rem 5% 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .footer-social a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--gradient);
+            transform: translateY(-3px);
+            border-color: transparent;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* SCROLL TO TOP */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            box-shadow: var(--shadow);
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                padding: 2rem;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .education-card.featured {
+                grid-column: span 1;
+            }
+
+            .about-badge {
+                position: relative;
+                bottom: 0;
+                right: 0;
+                margin-top: 1rem;
+                display: inline-flex;
+            }
+
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero {
+                padding: 5rem 5% 4rem;
+            }
+
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <div class="logo">
+            <span class="logo-icon">🔧</span>
+            <span>Savatech</span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#inicio">Inicio</a>
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#formacion">Formación</a>
+            <a href="#caracteristicas">Sistema</a>
+            <a href="#codigo">Código</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#contacto" class="cta-btn">💬 Contactar</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-badge">🚀 Desarrollador de Software & Analista de Datos | Joinville - Brasil</div>
+            <h1>Sistema Integral de <span class="highlight">Helpdesk Técnico</span></h1>
+            <p>Plataforma web completa para la gestión de tickets, base de conocimiento y diagnósticos técnicos
+                avanzados. Desarrollada para optimizar el trabajo del soporte técnico en <strong>Savatech</strong>.</p>
+            <div class="hero-buttons">
+                <a href="#codigo" class="btn">💻 Ver Proyectos</a>
+                <a href="https://wa.me/5548991857171" class="btn btn-secondary" target="_blank">💬 WhatsApp</a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">🇪🇸</span>
+                    <span class="stat-label">Formación España</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Diagnósticos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">Python</span>
+                    <span class="stat-label">SQL & Datos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">-70%</span>
+                    <span class="stat-label">Tiempo Diag.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section class="about" id="sobre-mi">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Sobre mí</span>
+                <h2 class="section-title">Marco A. Savala B.</h2>
+                <p class="section-subtitle">Desarrollador de Software & Analista de Datos</p>
+            </div>
+            <div class="about-grid fade-in">
+                <div class="about-image">
+                    <div class="about-photo">👨‍💻</div>
+                    <div class="about-badge">
+                        <div class="about-badge-icon">⚡</div>
+                        <div>
+                            <strong style="display: block; color: var(--dark);">Formado en España</strong>
+                            <span style="font-size: 0.85rem; color: #64748b;">Informática de Sistemas</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <h3>Desarrollador de Software & Analista de Datos</h3>
+                    <p>Profesional con <strong>formación internacional en España</strong> en Informática de Sistemas,
+                        especializado en desarrollo de software con <strong>Python, SQL y análisis de datos</strong>.
+                        Combino conocimientos técnicos avanzados en hardware con habilidades de programación para crear
+                        soluciones integrales.</p>
+                    <p>He desarrollado el <strong>Sistema Helpdesk Savatech</strong>, una plataforma completa que
+                        integra gestión de tickets, base de datos relacional, análisis de métricas y más de 50
+                        diagnósticos técnicos automatizados. Trabajo desde <strong>Joinville, Brasil</strong> ofreciendo
+                        servicios remotos y presenciales.</p>
+
+                    <div class="about-info">
+                        <div class="about-info-item">
+                            <div class="about-info-icon">🇪🇸</div>
+                            <div class="about-info-text">
+                                <strong>Formación</strong>
+                                <span>Informática de Sistemas - España</span>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <div class="about-info-icon">🐍</div>
+                            <div class="about-info-text">
+                                <strong>Backend</strong>
+                                <span>Python, SQL, Flask</span>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <div class="about-info-icon">📊</div>
+                            <div class="about-info-text">
+                                <strong>Especialidad</strong>
+                                <span>Análisis de Datos & BI</span>
+                            </div>
+                        </div>
+                        <div class="about-info-item">
+                            <div class="about-info-icon">💻</div>
+                            <div class="about-info-text">
+                                <strong>Equipo</strong>
+                                <span>MacBook Pro 2020</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMACIÓN ACADÉMICA -->
+    <section class="education" id="formacion">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Formación</span>
+                <h2 class="section-title">Educación y Certificaciones</h2>
+                <p class="section-subtitle">Mi trayectoria académica internacional</p>
+            </div>
+
+            <div class="education-grid">
+                <div class="education-card featured fade-in">
+                    <div class="education-flag">🇪🇸</div>
+                    <div class="education-content">
+                        <div class="education-period">España</div>
+                        <h3>Informática de Sistemas</h3>
+                        <p class="education-institution">Formación Superior en Sistemas Informáticos</p>
+                        <p class="education-description">
+                            Estudios completos en desarrollo de software, bases de datos, programación
+                            y análisis de sistemas. Formación internacional con enfoque práctico en
+                            tecnologías modernas como Python, SQL y herramientas de análisis de datos.
+                        </p>
+                        <div class="education-tags">
+                            <span class="edu-tag">🐍 Python</span>
+                            <span class="edu-tag">🗄️ SQL</span>
+                            <span class="edu-tag">📊 Análisis de Datos</span>
+                            <span class="edu-tag">💻 Desarrollo de Software</span>
+                            <span class="edu-tag">🔧 Sistemas Informáticos</span>
+                            <span class="edu-tag">🌐 Redes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-card fade-in">
+                    <div class="education-flag">🎯</div>
+                    <div class="education-content">
+                        <div class="education-period">Especialización</div>
+                        <h3>Desarrollo de Software</h3>
+                        <p class="education-institution">Formación Continua</p>
+                        <p class="education-description">
+                            Especialización en desarrollo de aplicaciones web, automatización de procesos
+                            y creación de sistemas integrales para helpdesk y gestión técnica.
+                        </p>
+                        <div class="education-tags">
+                            <span class="edu-tag">HTML5</span>
+                            <span class="edu-tag">CSS3</span>
+                            <span class="edu-tag">JavaScript</span>
+                            <span class="edu-tag">Git/GitHub</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-card fade-in">
+                    <div class="education-flag">📈</div>
+                    <div class="education-content">
+                        <div class="education-period">Análisis</div>
+                        <h3>Análisis de Datos</h3>
+                        <p class="education-institution">Data Analytics & Business Intelligence</p>
+                        <p class="education-description">
+                            Análisis de datos para toma de decisiones, visualización de métricas,
+                            reportes automatizados y dashboards interactivos para optimización de procesos.
+                        </p>
+                        <div class="education-tags">
+                            <span class="edu-tag">Python</span>
+                            <span class="edu-tag">Pandas</span>
+                            <span class="edu-tag">SQL</span>
+                            <span class="edu-tag">Dashboards</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARACTERÍSTICAS -->
+    <section id="caracteristicas">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Sistema</span>
+                <h2 class="section-title">Módulos del Sistema</h2>
+                <p class="section-subtitle">Soluciones completas para el helpdesk técnico</p>
+            </div>
+            <div class="features">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📊</div>
+                    <h3>Dashboard Analítico</h3>
+                    <p>Visualización en tiempo real del estado de los tickets, métricas de rendimiento y gráficos de
+                        estado (Abiertos, En Proceso, Cerrados).</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎫</div>
+                    <h3>Gestión de Tickets</h3>
+                    <p>Sistema completo de creación, asignación y seguimiento de tickets con filtros avanzados por
+                        fecha, estado y prioridad.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📚</div>
+                    <h3>Base de Conocimiento</h3>
+                    <p>Repositorio de más de 50 artículos técnicos organizados por categorías (Electrónica, Informática,
+                        Redes) para solución rápida.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Diagnósticos Técnicos</h3>
+                    <p>Guías paso a paso interactivas para reparación de hardware (TVs, Laptops, Impresoras) con
+                        diagramas de flujo y voltajes.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📈</div>
+                    <h3>Reportes Automatizados</h3>
+                    <p>Generación de reportes diarios, semanales y mensuales en formato descargable con estadísticas
+                        detalladas del soporte.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">💬</div>
+                    <h3>Chat & Comunicación</h3>
+                    <p>Módulo de conversas integrado para comunicación fluida entre técnicos y clientes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section class="services" id="servicios">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(255,255,255,0.2); color: white;">Servicios</span>
+                <h2 class="section-title">Servicios que Ofrezco</h2>
+                <p class="section-subtitle">Soporte técnico remoto y presencial</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🦠</div>
+                    <h3>Eliminación de Virus</h3>
+                    <p>Limpieza completa de malware, spyware y ransomware</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">💾</div>
+                    <h3>Formateo de Equipos</h3>
+                    <p>Instalación limpia de Windows, macOS y drivers</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🖥️</div>
+                    <h3>Soporte Remoto</h3>
+                    <p>Asistencia vía AnyDesk y TeamViewer</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔧</div>
+                    <h3>Reparación Hardware</h3>
+                    <p>TVs, laptops, impresoras y más</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🌐</div>
+                    <h3>Redes y WiFi</h3>
+                    <p>Configuración y solución de problemas de red</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">💾</div>
+                    <h3>Recuperación de Datos</h3>
+                    <p>Rescate de archivos de discos dañados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMOSTRACIÓN -->
+    <section class="showcase" id="demostracion">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Demo</span>
+                <h2 class="section-title">Capturas del Sistema</h2>
+                <p class="section-subtitle">Vista previa de los módulos principales</p>
+            </div>
+            <div class="showcase-grid">
+                <div class="showcase-item fade-in">
+                    <div class="showcase-image-wrapper">
+                        <div class="laptop-mockup">
+                            <div class="laptop-screen">
+                                <img src="img/dashboard.png" alt="Dashboard Helpdesk" loading="lazy"
+                                    onerror="this.src='https://via.placeholder.com/600x400/08f2a8/ffffff?text=Dashboard+Savatech'">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="showcase-info">
+                        <h3>📊 Dashboard Principal</h3>
+                        <p>Panel de control con métricas clave: 43 tickets totales, distribución por estado y gráficos
+                            circulares.</p>
+                    </div>
+                </div>
+
+                <div class="showcase-item fade-in">
+                    <div class="showcase-image-wrapper">
+                        <div class="laptop-mockup">
+                            <div class="laptop-screen">
+                                <img src="img/gestion.png" alt="Gestión de Tickets" loading="lazy"
+                                    onerror="this.src='https://via.placeholder.com/600x400/2019d4/ffffff?text=Gestion+de+Tickets'">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="showcase-info">
+                        <h3>🎫 Gestión de Tickets</h3>
+                        <p>Interfaz limpia para filtrar tickets por estado (Abiertos, En Proceso), fecha y ordenamiento.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="showcase-item fade-in">
+                    <div class="showcase-image-wrapper">
+                        <div class="laptop-mockup">
+                            <div class="laptop-screen">
+                                <img src="img/base-conocimiento.png" alt="Base de Conocimiento" loading="lazy"
+                                    onerror="this.src='https://via.placeholder.com/600x400/06b6d4/ffffff?text=Base+de+Conocimiento'">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="showcase-info">
+                        <h3>📚 Base de Conocimiento</h3>
+                        <p>Buscador inteligente y filtrado por categorías para acceder rápidamente a soluciones
+                            técnicas.</p>
+                    </div>
+                </div>
+
+                <div class="showcase-item fade-in">
+                    <div class="showcase-image-wrapper">
+                        <div class="laptop-mockup">
+                            <div class="laptop-screen">
+                                <img src="img/reporte.png" alt="Reportes" loading="lazy"
+                                    onerror="this.src='https://via.placeholder.com/600x400/10b981/ffffff?text=Reportes+y+Estadisticas'">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="showcase-info">
+                        <h3>📈 Reportes de Soporte</h3>
+                        <p>Opciones para descargar reportes detallados (Diario, Semanal, Mensual) con análisis de
+                            rendimiento.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIAGNÓSTICOS -->
+    <section id="diagnosticos" style="background: white;">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Especialidad</span>
+                <h2 class="section-title">Motor de Diagnósticos Técnicos</h2>
+                <p class="section-subtitle">El corazón del sistema Savatech</p>
+            </div>
+
+            <div style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); padding: 3rem; border-radius: 20px; box-shadow: var(--shadow); border: 1px solid #e2e8f0;"
+                class="fade-in">
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; text-align: center; color: #64748b;">
+                    Una base de datos técnica interactiva que guía al técnico paso a paso en la reparación de equipos,
+                    con más de <strong>50 diagnósticos</strong> organizados por marca y tipo.
+                </p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+                    <div>
+                        <h3
+                            style="color: var(--primary); margin-bottom: 1.5rem; font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem;">
+                            🛠️ Cobertura de Equipos</h3>
+                        <ul style="list-style: none;">
+                            <li
+                                style="padding: 0.7rem 0; border-bottom: 1px dashed #cbd5e1; display: flex; align-items: center; gap: 0.8rem;">
+                                ✅ <strong>TVs:</strong> Samsung, LG, Sony, Philco</li>
+                            <li
+                                style="padding: 0.7rem 0; border-bottom: 1px dashed #cbd5e1; display: flex; align-items: center; gap: 0.8rem;">
+                                ✅ <strong>Laptops:</strong> MacBook, Dell, HP, Lenovo, Acer</li>
+                            <li
+                                style="padding: 0.7rem 0; border-bottom: 1px dashed #cbd5e1; display: flex; align-items: center; gap: 0.8rem;">
+                                ✅ <strong>Impresoras:</strong> HP, Epson, Canon, Brother</li>
+                            <li
+                                style="padding: 0.7rem 0; border-bottom: 1px dashed #cbd5e1; display: flex; align-items: center; gap: 0.8rem;">
+                                ✅ <strong>PC Desktop:</strong> Diagnóstico completo</li>
+                            <li
+                                style="padding: 0.7rem 0; border-bottom: 1px dashed #cbd5e1; display: flex; align-items: center; gap: 0.8rem;">
+                                ✅ <strong>Celulares:</strong> iPhone y Android</li>
+                            <li style="padding: 0.7rem 0; display: flex; align-items: center; gap: 0.8rem;">✅
+                                <strong>Consolas:</strong> PS4/PS5, Xbox, Switch</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3
+                            style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.3rem; display: flex; align-items: center; gap: 0.5rem;">
+                            ⚡ Características Técnicas</h3>
+                        <ul style="list-style: none;">
+                            <li
+                                style="padding: 0.7rem 0; border-bottom: 1px dashed #cbd5e1; display: flex; align-items: center; gap: 0.8rem;">
+                                🔍 Buscador en tiempo real</li>
+                            <li
+                                style="padding: 0.7rem 0; border-bottom: 1px dashed #cbd5e1; display: flex; align-items: center; gap: 0.8rem;">
+                                📏 Tablas de voltajes (Multímetro)</li>
+                            <li
+                                style="padding: 0.7rem 0; border-bottom: 1px dashed #cbd5e1; display: flex; align-items: center; gap: 0.8rem;">
+                                🌳 Diagramas de flujo ASCII</li>
+                            <li
+                                style="padding: 0.7rem 0; border-bottom: 1px dashed #cbd5e1; display: flex; align-items: center; gap: 0.8rem;">
+                                🎨 Modo oscuro en diagramas</li>
+                            <li
+                                style="padding: 0.7rem 0; border-bottom: 1px dashed #cbd5e1; display: flex; align-items: center; gap: 0.8rem;">
+                                📱 Diseño 100% responsive</li>
+                            <li style="padding: 0.7rem 0; display: flex; align-items: center; gap: 0.8rem;">💾 Funciona
+                                offline (HTML único)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS DE CÓDIGO -->
+    <section class="code-projects" id="codigo">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Código</span>
+                <h2 class="section-title">Proyectos de Desarrollo</h2>
+                <p class="section-subtitle">Aplicaciones desarrolladas con Python, SQL y más</p>
+            </div>
+
+            <div class="code-grid">
+                <div class="code-card fade-in">
+                    <div class="code-header">
+                        <div class="code-icon">🎫</div>
+                        <div class="code-tech">
+                            <span>Python</span>
+                            <span>SQL</span>
+                            <span>Flask</span>
+                        </div>
+                    </div>
+                    <h3>Sistema Helpdesk Savatech</h3>
+                    <p>Plataforma completa de gestión de tickets con base de datos relacional, dashboard analítico y
+                        sistema de diagnósticos técnicos automatizado.</p>
+                    <div class="code-features">
+                        <div class="code-feature">✅ Gestión de tickets con estados</div>
+                        <div class="code-feature">✅ Dashboard con métricas en tiempo real</div>
+                        <div class="code-feature">✅ Base de datos SQL optimizada</div>
+                        <div class="code-feature">✅ Sistema de búsqueda inteligente</div>
+                    </div>
+                    <div class="code-footer">
+                        <a href="#demostracion" class="code-link">🔗 Ver Demo</a>
+                        <a href="#" class="code-link">💻 GitHub</a>
+                    </div>
+                </div>
+
+                <div class="code-card fade-in">
+                    <div class="code-header">
+                        <div class="code-icon">📊</div>
+                        <div class="code-tech">
+                            <span>Python</span>
+                            <span>Pandas</span>
+                            <span>Matplotlib</span>
+                        </div>
+                    </div>
+                    <h3>Análisis de Datos Técnicos</h3>
+                    <p>Sistema de análisis de datos de reparaciones, identificando patrones de fallas, tiempos de
+                        resolución y optimización de inventario de repuestos.</p>
+                    <div class="code-features">
+                        <div class="code-feature">✅ Análisis de tendencias de fallas</div>
+                        <div class="code-feature">✅ Reportes automatizados</div>
+                        <div class="code-feature">✅ Visualización de métricas</div>
+                        <div class="code-feature">✅ Predicción de mantenimiento</div>
+                    </div>
+                    <div class="code-footer">
+                        <a href="#" class="code-link">🔗 Ver Demo</a>
+                        <a href="#" class="code-link">💻 GitHub</a>
+                    </div>
+                </div>
+
+                <div class="code-card fade-in">
+                    <div class="code-header">
+                        <div class="code-icon">⚙️</div>
+                        <div class="code-tech">
+                            <span>Python</span>
+                            <span>SQL</span>
+                            <span>API</span>
+                        </div>
+                    </div>
+                    <h3>Automatización de Procesos</h3>
+                    <p>Scripts de automatización para generación de reportes, backup de datos, y sincronización entre
+                        sistemas del helpdesk.</p>
+                    <div class="code-features">
+                        <div class="code-feature">✅ Reportes automáticos diarios</div>
+                        <div class="code-feature">✅ Backup programado de BD</div>
+                        <div class="code-feature">✅ Notificaciones por email</div>
+                        <div class="code-feature">✅ Integración con WhatsApp</div>
+                    </div>
+                    <div class="code-footer">
+                        <a href="#" class="code-link">🔗 Ver Demo</a>
+                        <a href="#" class="code-link">💻 GitHub</a>
+                    </div>
+                </div>
+
+                <div class="code-card fade-in">
+                    <div class="code-header">
+                        <div class="code-icon">🗄️</div>
+                        <div class="code-tech">
+                            <span>SQL</span>
+                            <span>SQLite</span>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                    <h3>Base de Datos de Diagnósticos</h3>
+                    <p>Sistema de base de datos relacional con más de 50 diagnósticos técnicos, optimizado con índices y
+                        consultas complejas para búsqueda rápida.</p>
+                    <div class="code-features">
+                        <div class="code-feature">✅ Modelo relacional optimizado</div>
+                        <div class="code-feature">✅ Consultas complejas SQL</div>
+                        <div class="code-feature">✅ Sistema de búsqueda full-text</div>
+                        <div class="code-feature">✅ Backup y restauración</div>
+                    </div>
+                    <div class="code-footer">
+                        <a href="#" class="code-link">🔗 Ver Demo</a>
+                        <a href="#" class="code-link">💻 GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="skills">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Habilidades</span>
+                <h2 class="section-title">Competencias Técnicas</h2>
+                <p class="section-subtitle">Herramientas y tecnologías que domino</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <div class="skill-category-header">
+                        <div class="skill-category-icon">🐍</div>
+                        <h3>Desarrollo Backend</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-name">Python</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-name">SQL (SQLite, MySQL)</span>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="88"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-name">Flask / Django</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-category-header">
+                        <div class="skill-category-icon">📊</div>
+                        <h3>Análisis de Datos</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-name">Pandas & NumPy</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-name">Matplotlib / Seaborn</span>
+                            <span class="skill-percent">82%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="82"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-name">Dashboards & BI</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-category-header">
+                        <div class="skill-category-icon">🎨</div>
+                        <h3>Desarrollo Frontend</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-name">HTML5 & CSS3</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-name">Diseño Responsivo</span>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="88"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category fade-in">
+                    <div class="skill-category-header">
+                        <div class="skill-category-icon">🔧</div>
+                        <h3>Diagnóstico Técnico</h3>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-name">Reparación de TVs</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-name">Laptops y Notebooks</span>
+                            <span class="skill-percent">92%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="92"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-item-header">
+                            <span class="skill-name">Medición con ferramentas do alta Tecnoligia</span>
+                            <span class="skill-percent">96%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="96"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section class="tech-stack-section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Tecnologías</span>
+                <h2 class="section-title">Stack Tecnológico Completo</h2>
+                <p class="section-subtitle">Herramientas que domino para desarrollo y análisis</p>
+            </div>
+
+            <h3 style="text-align: center; margin: 2rem 0 1rem; color: var(--primary);">💻 Desarrollo Backend</h3>
+            <div class="tech-stack">
+                <span class="tech-badge">🐍 Python</span>
+                <span class="tech-badge">🗄️ SQL</span>
+                <span class="tech-badge">🌶️ Flask</span>
+                <span class="tech-badge">🐼 Pandas</span>
+                <span class="tech-badge">📊 Matplotlib</span>
+            </div>
+
+            <h3 style="text-align: center; margin: 2rem 0 1rem; color: var(--primary);">🎨 Desarrollo Frontend</h3>
+            <div class="tech-stack">
+                <span class="tech-badge">📄 HTML5</span>
+                <span class="tech-badge">🎨 CSS3</span>
+                <span class="tech-badge">⚡ JavaScript</span>
+                <span class="tech-badge">📱 Responsive</span>
+                <span class="tech-badge">📊 Chart.js</span>
+            </div>
+
+            <h3 style="text-align: center; margin: 2rem 0 1rem; color: var(--primary);">🛠️ Herramientas</h3>
+            <div class="tech-stack">
+                <span class="tech-badge">🐙 Git/GitHub</span>
+                <span class="tech-badge">🖥️ VSCode</span>
+                <span class="tech-badge">💾 SQLite</span>
+                <span class="tech-badge">📈 Data Analysis</span>
+                <span class="tech-badge">🔧 AnyDesk</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact" id="contacto">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag" style="background: rgba(255,255,255,0.1); color: white;">Contacto</span>
+                <h2 class="section-title">¿Trabajamos juntos?</h2>
+                <p class="section-subtitle">Estoy disponible para nuevos proyectos y soporte técnico</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Hablemos de tu proyecto</h3>
+                    <p>Si tienes un problema técnico, necesitas desarrollo de software, análisis de datos o soporte
+                        remoto, no dudes en contactarme. Respondo en menos de 24 horas.</p>
+
+                    <a href="mailto:soporte.savatech@gmail.com" class="contact-item">
+                        <div class="contact-item-icon">📧</div>
+                        <div class="contact-item-text">
+                            <strong>Email</strong>
+                            <span>soporte.savatech@gmail.com</span>
+                        </div>
+                    </a>
+
+                    <a href="tel:+5548991857171" class="contact-item">
+                        <div class="contact-item-icon">📱</div>
+                        <div class="contact-item-text">
+                            <strong>Teléfono</strong>
+                            <span>+55 48 99185-7171</span>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/5548991857171" target="_blank" class="contact-item">
+                        <div class="contact-item-icon">💬</div>
+                        <div class="contact-item-text">
+                            <strong>WhatsApp</strong>
+                            <span>Click para chatear ahora</span>
+                        </div>
+                    </a>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div class="contact-item-text">
+                            <strong>Ubicación</strong>
+                            <span>Joinville, SC - Brasil</span>
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/5548991857171?text=Hola%20Marco,%20vi%20tu%20portafolio%20y%20me%20gustaría%20saber%20más%20sobre%20tus%20servicios"
+                        target="_blank" class="whatsapp-btn">
+                        💬 Contactar por WhatsApp
+                    </a>
+                </div>
+
+                <form class="contact-form" onsubmit="enviarWhatsApp(event)">
+                    <h3 style="margin-bottom: 1.5rem;">Envíame un mensaje</h3>
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" id="nombre" required placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="email" required placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Asunto</label>
+                        <input type="text" id="asunto" required placeholder="¿En qué puedo ayudarte?">
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje</label>
+                        <textarea id="mensaje" required
+                            placeholder="Cuéntame sobre tu proyecto o problema..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">🚀 Enviar por WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">🔧 Savatech Helpdesk</div>
+            <p style="color: rgba(255,255,255,0.7); max-width: 500px; margin: 0 auto;">
+                Desarrollador de Software & Analista de Datos formado en España. Especialista en Python, SQL y sistemas
+                de helpdesk técnico.
+            </p>
+
+            <div class="footer-social">
+                <a href="mailto:soporte.savatech@gmail.com" title="Email">📧</a>
+                <a href="https://wa.me/5548991857171" target="_blank" title="WhatsApp">💬</a>
+                <a href="tel:+5548991857171" title="Teléfono">📱</a>
+                <a href="#" title="GitHub">🐙</a>
+                <a href="#" title="LinkedIn">💼</a>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <p><strong>&copy; Marco A. Savala B. - 2024</strong></p>
+            <p>Joinville, SC - Brasil</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+                Hecho con ❤️ y mucho ☕ | <a href="#inicio" style="color: #08f2a8; text-decoration: none;">Volver arriba
+                    ↑</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <script>
+        // HAMBURGER MENU
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // NAVBAR SCROLL EFFECT
+        const navbar = document.getElementById('navbar');
+        const scrollTop = document.getElementById('scrollTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 500) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // FADE IN ANIMATION
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+
+                    if (entry.target.classList.contains('skill-category')) {
+                        entry.target.querySelectorAll('.skill-progress').forEach(bar => {
+                            const width = bar.getAttribute('data-width');
+                            setTimeout(() => {
+                                bar.style.width = width + '%';
+                            }, 200);
+                        });
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in, .skill-category').forEach(el => {
+            observer.observe(el);
+        });
+
+        // FORMULARIO → WHATSAPP
+        function enviarWhatsApp(e) {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const asunto = document.getElementById('asunto').value;
+            const mensaje = document.getElementById('mensaje').value;
+
+            const texto = `*Nuevo mensaje desde el portafolio*%0A%0A*Nombre:* ${nombre}%0A*Email:* ${email}%0A*Asunto:* ${asunto}%0A%0A*Mensaje:*%0A${mensaje}`;
+
+            window.open(`https://wa.me/5548991857171?text=${texto}`, '_blank');
+        }
+    </script>
+
+</body>
+
+</html>
