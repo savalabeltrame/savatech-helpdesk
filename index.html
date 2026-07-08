@@ -380,27 +380,39 @@
             position: relative;
         }
 
-        .about-photo {
-            width: 100%;
-            aspect-ratio: 1;
-            background: var(--gradient);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-            color: white;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
+       .about-photo {
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--gradient);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
 
-        .about-photo::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 60%);
-        }
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.3s ease;
+}
+
+.about-photo:hover .profile-img {
+    transform: scale(1.05);
+}
+
+.about-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+}
 
         .about-badge {
             position: absolute;
@@ -1380,7 +1392,10 @@
             </div>
             <div class="about-grid fade-in">
                 <div class="about-image">
-                    <div class="about-photo">👨‍💻</div>
+                    <div class="about-photo">
+                        <img src="img/perfil.jpg" height="400" width="490"
+                        alt ="Marco Savala">
+                    </div>
                     <div class="about-badge">
                         <div class="about-badge-icon">⚡</div>
                         <div>
